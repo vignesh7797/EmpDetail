@@ -3,27 +3,40 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpFormComponent } from './emp-form/emp-form.component';
+import { EmpFormComponent } from './employee/emp-form/emp-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmplistComponent } from './emplist/emplist.component';
+import { EmplistComponent } from './employee/emplist/emplist.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { ShowempComponent } from './employee/showemp/showemp.component';
+import { EmpdetailComponent } from './employee/empdetail/empdetail.component';
+import { LoginGuard } from './guard/login.guard';
+import { PhonePipe } from './pipe/phone.pipe';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpFormComponent,
     EmplistComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    EmployeeComponent,
+    ShowempComponent,
+    EmpdetailComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

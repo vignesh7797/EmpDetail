@@ -1,0 +1,19 @@
+<div class="row justify-content-center" style="height: 90vh;">
+    <div class="col-md-4 align-self-center">
+        <div class="row">
+            <h5 class="col-8">Your OTP is {{otp}}</h5>
+            <p class="col-2">{{timeout}}s</p>
+        </div>
+
+        <form [formGroup]="OneTimePass" (ngSubmit)="OnSubmit()" >
+            <div>
+                <input type="number" name="pass" formControlName="pass" class="form-control" placeholder="Enter OTP" required [ngClass]="{'is-invalid': submitted && f.pass.errors}">
+                <span *ngIf="submitted && f.pass.errors" class="text-danger">Please Enter the OTP*</span>
+            </div> 
+            
+            <button type="submit" class="btn btn-success mt-5">Log In</button>
+        </form>
+
+    </div>
+    
+</div>

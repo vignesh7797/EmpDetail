@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EditdataService } from '../share/editdata.service';
-import { EmpdataService } from '../share/empdata.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { EditdataService } from '../../share/editdata.service';
+import { EmpdataService } from '../../share/empdata.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-emplist',
@@ -37,6 +37,10 @@ export class EmplistComponent implements OnInit {
         this.empdata.deletedata(data);
       }
     });
+  }
+
+  getDetail(detail){
+    this.empdata.setDetail(detail);
   }
 
 

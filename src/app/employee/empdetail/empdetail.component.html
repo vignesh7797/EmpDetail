@@ -1,0 +1,12 @@
+<h4>Hi {{empDetail.name}}.!</h4>
+<br>
+<br>
+<p><b>Employee Id:</b> {{empDetail.empid}}</p>
+<p><b>Email:</b> {{empDetail.email}}</p>
+<p><b>Phone:</b> {{empDetail.phone |phone}}</p>
+<p><b>Date of Joining:</b> {{empDetail.joiningdate}}</p>
+
+<div class="row">
+    <a class="col-5 m-1 btn btn-success"  routerLink="/e-portal/list">Go to List</a>
+    <a class="col-5 m-1 btn btn-primary" (click)="OnEdit(empDetail);">Edit Detail</a>
+</div>

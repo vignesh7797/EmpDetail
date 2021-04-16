@@ -14,10 +14,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of empList; let i=index">
-            <td>{{data.name}}</td>
+            <td><a class="text-primary" [routerLink]="'/e-portal/'+data.empid" (click)="getDetail(data)">{{data.name}}</a></td>
             <td>{{data.empid}}</td>
             <td>{{data.email}}</td>
-            <td>{{data.phone}}</td>
+            <td>{{data.phone |phone}}</td>
             <td>{{data.joiningdate | date:'dd/MM/yy'}}</td>
             <td><a class="text-primary" (click)="OnEdit(data)">edit</a></td>
             <td><a class="text-primary" (click)="open(content, data)">delete</a></td>

@@ -12,7 +12,7 @@ export class EditdataService {
 
   setData(value){
       this.editData.next(value);
-      console.log(this.editData);
+      console.log(this.editData.value);
   }
 
   getdata(){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmpdataService } from '../share/empdata.service';
 
 @Component({
@@ -6,9 +6,11 @@ import { EmpdataService } from '../share/empdata.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   todayDate = new Date();
+  time = new Date();
+  timer;
 
   NoOf:number = 0;
 
@@ -16,9 +18,18 @@ export class HeaderComponent implements OnInit {
      this.empdata.getdata().subscribe(data => {
       this.NoOf = data.length;
      })
+     
    }
 
   ngOnInit(): void {
+
+    this.timer = setInterval(() => {
+      this.time = new Date();
+    }, 1000);
+  }
+
+  ngOnDestroy(){
+    clearInterval(this.timer);
   }
 
 }
