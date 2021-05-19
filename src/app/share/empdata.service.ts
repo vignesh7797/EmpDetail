@@ -1,24 +1,39 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmpdataService {
+export class EmpdataService implements OnInit{
 
-  empData = new BehaviorSubject<any>([]);
+  empData = new BehaviorSubject<any>(null);
 
-  arr:any[]=[{
-    email: "emp1@htc.com",
-    empid: 1,
-    joiningdate: "2021-04-11",
-    name: "Vicky",
-    phone: 9876543210
-  }];
+  arr:any;
 
   empDetail = new BehaviorSubject<any>(null);
 
-  constructor() { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+   
+    this.http.get('../../assets/users.json').subscribe(data =>{
+      console.log(data);
+      this.arr = data;
+    });
+
+  }
+  
+
+  ngOnInit(): void {
+
+  }
+
+   
+
+   getUsers(): Observable<any>{
+     return this.http.get('../../assets/users.json').pipe(delay(1000))
+   }
 
   setData(value){
     this.arr.push(value)
@@ -27,9 +42,15 @@ export class EmpdataService {
   }
 
   updateData(newValue, oldValue){
-    const index = this.arr.indexOf(oldValue);
-    this.arr[index] = newValue;
-    this.empData.next(this.arr);
+    console.log(this.arr);
+    console.log(oldValue);
+    setTimeout(() => {
+      const index = this.arr.findIndex(x => x.email === oldValue.email);
+      console.log(index);
+      this.arr[index] = newValue;
+      this.empData.next(this.arr);
+    },5000)
+
   }
 
   deletedata(value){

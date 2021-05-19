@@ -36,9 +36,12 @@ export class LoginComponent implements OnInit {
   OnSubmit(){
     this.submitted = true;
     this.otpservice.getpass(this.OneTimePass.value.pass);
+
     this.router.navigateByUrl("/e-portal");
+    
     if(this.otpservice.OnCheck() == false ){
       alert("Please Enter valid OTP..!");
+      window.location.reload();
     }
   }
 }

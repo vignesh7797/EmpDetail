@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PhonePipe } from 'src/app/pipe/phone.pipe';
 import { EditdataService } from '../../share/editdata.service';
 import { EmpdataService } from '../../share/empdata.service';
 
@@ -16,6 +17,8 @@ export class EmpFormComponent implements OnInit {
   submitted=false;
   isSubmit=true;
   isUpdate=false;
+  phonepipe = new PhonePipe();
+  Default;
 
   @ViewChild('phone') phone:ElementRef;
 
@@ -26,14 +29,17 @@ export class EmpFormComponent implements OnInit {
       'name':[null, Validators.required],
       'empid':[null, [Validators.required, Validators.minLength(5)]],
       'email':[null, [Validators.required, Validators.email]],
-      'phone':['+1 ', Validators.required],
+      'phone':['', [Validators.required, Validators.minLength(10)]],
       'joiningdate':[null, [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]]
     });
+
+   
 
     this.editdata.getdata().subscribe(data => {
       if(data != ''){
         this.Editdata = data;
-        this.Editdata.phone='+1 '+this.Editdata.phone;
+        console.log(this.Editdata);
+        
         this.EmployeeForm.setValue(this.Editdata);
         this.isSubmit=false;
         this.isUpdate=true;
@@ -56,16 +62,18 @@ export class EmpFormComponent implements OnInit {
      let sp = value.split("");
      console.log(sp)
 
-    for(let i=0; i<sp.length;i++){
-      if(sp[i] == " "){
-        sp.splice(i,1);
+     if(sp[0] == '+'){
+      for(let i=0; i<sp.length;i++){
+        if(sp[i] == " "){
+          sp.splice(i,1);
+        }
       }
-    }
-
-    sp.splice(0,3);
+      sp.splice(0,3);
+     }
+    
     sp = sp.join('');
     
-    this.EmployeeForm.value.phone = sp;
+    this.EmployeeForm.value.phone = parseInt(sp);
 
     this.submitted = true;
 
@@ -84,45 +92,17 @@ export class EmpFormComponent implements OnInit {
      value = value.toString();
     
      
-
-     let sp = value.split("");
-     console.log(sp)
-
-    for(let i=0; i<sp.length;i++){
-      if(sp[i] == " "){
-        sp.splice(i,1);
-      }
-    }
-
-    sp.splice(0,2);
-    sp = sp.join('');
-    
-    this.EmployeeForm.value.phone = sp;
+    if(this.EmployeeForm.valid){
 
     console.log(this.EmployeeForm.value, this.Editdata);
     this.empdata.updateData(this.EmployeeForm.value, this.Editdata);
     this.EmployeeForm.reset();
     this.isSubmit=true;
     this.isUpdate=false;
+    }
   }
 
-  OnKey(e:any){
-    
-    const value= this.phone.nativeElement.value;
 
-    const len = value.length;
-      if(len == 3 || len == 7 || len==11){
-          this.phone.nativeElement.value = value+ " ";
-      }
-  }
-
-  OnkeyUp(e:any){
-
-      const val = this.phone.nativeElement.value;
-      if (!/^\+[\d ]*$/.test(val)) {
-        this.phone.nativeElement.value = val.slice(0, -1);
-      }
-
-  }
+  
 
 }

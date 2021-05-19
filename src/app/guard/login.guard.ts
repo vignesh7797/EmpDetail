@@ -10,13 +10,18 @@ export class LoginGuard implements CanActivate {
 
   isAuthenticate = false;
 
+  user:{
+    username:'Admin',
+    password:'Admin@321'
+  }
+
   constructor(private otpService:OTPService){ 
     this.isAuthenticate = this.otpService.OnCheck();
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean  {
     return this.isAuthenticate;
   }
   

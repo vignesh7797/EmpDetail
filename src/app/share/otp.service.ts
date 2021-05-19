@@ -26,9 +26,7 @@ export class OTPService implements OnInit, OnDestroy{
       }
     }, 1000);
 
-      // this.otpgen = setInterval(() => {
-      //   this.Otp.next(Math.floor(1000 + Math.random() * 9000));
-      // }, 15000);
+
 
       
       
@@ -60,7 +58,6 @@ export class OTPService implements OnInit, OnDestroy{
       }else{
         isequal= false;
       }
-    
 
     return isequal;
   }

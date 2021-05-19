@@ -1,0 +1,20 @@
+<div class="row justify-content-center" style="height: 90vh;">
+    <div class="col-md-4 align-self-center"> 
+
+        <form [formGroup]="logIn" (ngSubmit)="Submit()">
+            <div class="alert alert-success m-3" role="alert">
+                Password: {{otp}}
+              </div>
+            <label for="user">User Name:</label>
+            <input class="form-control m-3" type="text" name="" id="user" formControlName="user" value="Admin" disabled>
+            <label for="user">Password:</label>
+            <input class="form-control m-3" type="password" autofocus formControlName="pass" name="" id="password"  [ngClass]="{'is-invalid': submitted && f.pass.errors }">
+            <span *ngIf="submitted && f.empid.errors" class="text-danger">Password is Required*</span>
+            
+            <button type="submit" class="btn btn-primary m-3">
+                <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> LogIn
+            </button>
+        </form>
+
+    </div>
+</div>

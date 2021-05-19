@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EditdataService } from '../../share/editdata.service';
 import { EmpdataService } from '../../share/empdata.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/share/auth.service';
 
 @Component({
   selector: 'app-emplist',
@@ -12,31 +14,54 @@ export class EmplistComponent implements OnInit {
 
   empList:any[];
   closeResult = '';
+  LoginStatus:boolean;
   
 
-  constructor(private empdata: EmpdataService, private editdata: EditdataService, private modalService: NgbModal) { 
-    this.empdata.getdata().subscribe(data => {
+  constructor(private route:ActivatedRoute, private router:Router, private authService:AuthService ,private empdata: EmpdataService, private editdata: EditdataService, private modalService: NgbModal) { 
+     this.empdata.getdata().subscribe(data => {
+       console.log(data)
       this.empList = data;
-    })
-  }
+     });
 
-  ngOnInit(): void {
+     this.authService.loginStatus().subscribe(s =>{
+      this.LoginStatus = s;
+     });
+     
+  } 
+
+  ngOnInit(): void { 
+    this.empList = this.route.snapshot.data.users;
+    console.log(this.empList.length);
   }
 
   OnEdit(value){
     console.log(value);
-    this.editdata.setData(value);
+    if(this.LoginStatus){
+      this.editdata.setData(value);
+    }else{
+      this.router.navigateByUrl('/login');
+     // this.authService.store(value,'edit');
+    }
+    
   }
 
 
 
   open(content, data) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+
+    if(this.LoginStatus){
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
      
-      if(result == "Yes"){
-        this.empdata.deletedata(data);
-      }
-    });
+        if(result == "Yes"){
+          this.empdata.deletedata(data);
+        }
+      });
+    }else{
+      this.router.navigateByUrl('/login');
+     // this.authService.store(data,'edit', content);
+    }
+
+    
   }
 
   getDetail(detail){

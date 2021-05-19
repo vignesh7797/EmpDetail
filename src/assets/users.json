@@ -1,0 +1,121 @@
+[
+    {
+    "name": "Vicky",
+    "empid": 1,
+    "email": "emp1@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-11"
+    },
+
+    {
+    "name": "Sakthi",
+    "empid": 2,
+    "email": "emp2@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-09"
+    },
+
+    {
+    "name": "Siva",
+    "empid": 3,
+    "email": "emp3@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-07"
+    },
+
+    {
+    "name": "Lakshmi",
+    "empid": 4,
+    "email": "emp4@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-04"
+    },
+
+    {
+    "name": "Jayakumar",
+    "empid": 5,
+    "email": "emp5@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-05"
+    },
+    
+    {
+    "name": "Jegatheesh",
+    "empid": 6,
+    "email": "emp6@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-06"
+    },
+
+    {
+    "name": "Vignesh",
+    "empid": 7,
+    "email": "emp7@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-07"
+    },
+
+    {
+    "name": "Saranya",
+    "empid": 8,
+    "email": "emp8@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-08"
+    },
+    
+    {
+    "name": "Gowtham",
+    "empid": 9,
+    "email": "emp9@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-09"
+    },
+
+    {
+    "name": "Srini",
+    "empid": 10,
+    "email": "emp10@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-10"
+    },
+
+    {
+    "name": "Bharath",
+    "empid": 11,
+    "email": "emp11@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-11"
+    },
+    
+    {
+    "name": "Arun",
+    "empid": 12,
+    "email": "emp12@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-12"
+    },
+
+    {
+    "name": "Tamil",
+    "empid": 13,
+    "email": "emp13@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-13"
+    },
+
+    {
+    "name": "Rajeshh",
+    "empid": 14,
+    "email": "emp14@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-14"
+    },
+    
+    {
+    "name": "Shankar",
+    "empid": 15,
+    "email": "emp15@htc.com",
+    "phone": 9876543210,
+    "joiningdate": "2021-04-15"
+    }
+]

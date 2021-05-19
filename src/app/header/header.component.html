@@ -1,13 +1,27 @@
-<div class="row justify-content-between">
-    <div class="col-2">
-        <h1>HTC</h1>
-    </div>
-    <div class="col-6">
-        <h3 style="text-align: center;">Employee Portal</h3>
-    </div>
 
-    <div class="col-3">
-        <p><b>No.of Employee :</b> {{NoOf}}</p>
-        <p> <b>Date :</b> {{todayDate | date:'MM/dd/yy'}} <b>Time:</b> {{time | date:'hh:mm:ss a'}}</p>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><h1>HTC</h1></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+            <a class="nav-link active" routerLink='/'>Home</a>
+          </li> 
+            <li class="nav-item">
+                <a class="nav-link active"  (click)="OnLog()">{{islogged? 'LogOut' : 'LogIn'}}</a>
+                <!-- <button class="btn btn-secondary shadow" routerLink="/">Log out</button> -->
+            </li>
+         
+        </ul>
+        <div class=" text-white">
+            
+            <p><b>No.of Employee :</b> {{NoOf}}</p> 
+
+            <p><b>Date :</b> {{todayDate | date:'MM/dd/yy'}} <b>Time:</b> {{time | date:'hh:mm:ss a'}}</p>
+        </div>
+      </div>
     </div>
-</div>
+  </nav>

@@ -15,6 +15,9 @@ import { EmpdetailComponent } from './employee/empdetail/empdetail.component';
 import { LoginGuard } from './guard/login.guard';
 import { PhonePipe } from './pipe/phone.pipe';
 import { HttpClientModule } from "@angular/common/http";
+import { AuthComponent } from './auth/auth.component';
+import { UserResolver } from './guard/user.resolver';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { HttpClientModule } from "@angular/common/http";
     EmployeeComponent,
     ShowempComponent,
     EmpdetailComponent,
-    PhonePipe
+    PhonePipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { HttpClientModule } from "@angular/common/http";
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [LoginGuard],
+  providers: [UserResolver,LoginGuard, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

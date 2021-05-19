@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PhonePipe implements PipeTransform {
 
-  transform(value: number) {
+  transform(value: any) {
 
     var phone = value.toString();
 

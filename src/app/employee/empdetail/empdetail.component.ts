@@ -19,7 +19,7 @@ export class EmpdetailComponent implements OnInit {
       this.empDetail = data;
     });
 
-    console.log(this.empDetail);
+   // console.log(this.empDetail);
   }
 
   ngOnInit(): void {
