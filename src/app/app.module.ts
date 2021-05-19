@@ -19,6 +19,10 @@ import { AuthComponent } from './auth/auth.component';
 import { UserResolver } from './guard/user.resolver';
 import { AuthGuard } from './guard/auth.guard';
 
+import { NavigationModule } from "@progress/kendo-angular-navigation";
+import { LayoutModule } from "@progress/kendo-angular-layout";
+import { IconsModule } from '@progress/kendo-angular-icons';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +42,10 @@ import { AuthGuard } from './guard/auth.guard';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NavigationModule,
+    LayoutModule,
+    IconsModule
   ],
   providers: [UserResolver,LoginGuard, AuthGuard],
   bootstrap: [AppComponent]

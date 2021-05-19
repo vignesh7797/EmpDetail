@@ -1,0 +1,22 @@
+ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  li {
+    margin: 0 9px;
+  }
+  li:hover {
+    cursor: pointer;
+    color: #0d6efd;
+  }
+  .actions .k-button {
+    padding: 0;
+  }
+
+.k-appbar-light {
+    color: #ffffff;
+    background-color: #0d6efd;
+}

@@ -25,3 +25,38 @@
       </div>
     </div>
   </nav>
+
+  <kendo-appbar [position]="'top'">
+    <kendo-appbar-section>
+      <button class="k-button k-button-clear">
+        <!-- <kendo-icon [name]="'menu'"></kendo-icon> -->
+      </button>
+    </kendo-appbar-section>
+
+    <kendo-appbar-section>
+      <h1 class="title">HTC</h1>
+    </kendo-appbar-section>
+
+    <kendo-appbar-spacer [width]="'32px'"></kendo-appbar-spacer>
+
+    <kendo-appbar-section>
+      <ul>
+        <li><span routerLink='/'>Home</span></li>
+        <li><span (click)="OnLog()">{{islogged? 'LogOut' : 'LogIn'}}</span></li>
+      </ul>
+    </kendo-appbar-section>
+
+    <kendo-appbar-spacer></kendo-appbar-spacer>
+    <kendo-appbar-spacer></kendo-appbar-spacer>
+
+
+    <kendo-appbar-section>
+      <p><b>No.of Employee :</b> {{NoOf}}</p> 
+    </kendo-appbar-section>
+
+    <kendo-appbar-spacer></kendo-appbar-spacer>
+
+    <kendo-appbar-section>
+      <p><b>Date :</b> {{todayDate | date:'MM/dd/yy'}} <b>Time:</b> {{time | date:'hh:mm:ss a'}}</p>
+    </kendo-appbar-section>
+  </kendo-appbar>
