@@ -19,6 +19,7 @@ export class EmpFormComponent implements OnInit {
   isUpdate=false;
   phonepipe = new PhonePipe();
   Default;
+  mask='000 000 0000'
 
   @ViewChild('phone') phone:ElementRef;
 
@@ -27,7 +28,7 @@ export class EmpFormComponent implements OnInit {
 
     this.EmployeeForm =  this.formBuilder.group({
       'name':[null, Validators.required],
-      'empid':[null, [Validators.required, Validators.minLength(5)]],
+      'empid':[null, [Validators.required, Validators.minLength(1), Validators.maxLength(5)]],
       'email':[null, [Validators.required, Validators.email]],
       'phone':['', [Validators.required, Validators.minLength(10)]],
       'joiningdate':[null, [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]]

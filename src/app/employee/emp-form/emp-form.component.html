@@ -2,22 +2,36 @@
             <form [formGroup]="EmployeeForm" class="m-5" (ngSubmit)="isSubmit? onSubmit() : OnUpdata()" >
                 <h3 style="text-align: center;">Employee Details</h3>
 
-               <div>
-                <label for="name" class="mt-3">Name: <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{'is-invalid': submitted && f.name.errors}">
-               </div>
 
-                <div>
-                    <label for="empid" class="mt-3">Employee ID: <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" id="empid" formControlName="empid" [ngClass]="{'is-invalid': submitted && f.empid.errors }">
-                    <span *ngIf="submitted && f.empid.errors" class="text-danger">Employee Id is Required*</span>
-                </div>
+               <kendo-formfield>
+                <kendo-label for="name">Name: <span class="text-danger">*</span></kendo-label>
+                <kendo-textbox formControlName="name" id="name" showSuccessIcon="initial" showErrorIcon="initial" required [ngClass]="{'is-invalid': submitted && f.name.errors}"></kendo-textbox>
+                <span *ngIf="submitted && f.name.errors" class="text-danger">Employee Name is Required*</span>
+              </kendo-formfield>
 
-                <div>
-                    <label for="email" class="mt-3">Email: <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors }">
-                    <span *ngIf="submitted && f.email.errors" class="text-danger">Enter Valid Email Id*</span>
-                </div>
+              <kendo-formfield>
+                <kendo-label for="empid">Employee ID: <span class="text-danger">*</span></kendo-label>
+                <kendo-textbox formControlName="empid" id="empid" showSuccessIcon="initial" showErrorIcon="initial" required [ngClass]="{'is-invalid': submitted && f.name.errors}"></kendo-textbox>
+                <span *ngIf="submitted && f.empid.errors" class="text-danger">Employee Id is Required*</span>
+              </kendo-formfield>
+
+              <kendo-formfield>
+                <kendo-label for="email">Email: <span class="text-danger">*</span></kendo-label>
+                <kendo-textbox formControlName="email" id="email" showSuccessIcon="initial" showErrorIcon="initial" required [ngClass]="{'is-invalid': submitted && f.name.errors}"></kendo-textbox>
+                <span *ngIf="submitted && f.email.errors" class="text-danger">Enter Valid Email Id*</span>
+              </kendo-formfield>
+
+                <kendo-formfield>
+                    <kendo-label for="phone">Phone No: <span class="text-danger">*</span></kendo-label>
+                    <kendo-maskedtextbox [mask]="mask" formControlName="phone" id="phone" showSuccessIcon="initial" showErrorIcon="initial" required [ngClass]="{'is-invalid': submitted && f.name.errors}">
+                    
+                        <ng-template kendoTextBoxPrefixTemplate>
+                        <span>+1</span>
+                        <kendo-textbox-separator></kendo-textbox-separator>
+                        </ng-template>
+                    </kendo-maskedtextbox>
+                    <span *ngIf="submitted && f.phone.errors" class="text-danger">Enter Valid Email Id*</span>
+                </kendo-formfield>
 
                 <div>
                     <label for="phone" class="mt-3">Phone No: <span class="text-danger">*</span></label>

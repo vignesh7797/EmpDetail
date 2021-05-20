@@ -10,7 +10,7 @@ ul {
   }
   li:hover {
     cursor: pointer;
-    color: #0d6efd;
+    text-decoration: underline;
   }
   .actions .k-button {
     padding: 0;

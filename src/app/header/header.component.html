@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><h1>HTC</h1></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,6 @@
           </li> 
             <li class="nav-item">
                 <a class="nav-link active"  (click)="OnLog()">{{islogged? 'LogOut' : 'LogIn'}}</a>
-                <!-- <button class="btn btn-secondary shadow" routerLink="/">Log out</button> -->
             </li>
          
         </ul>
@@ -24,14 +23,9 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
   <kendo-appbar [position]="'top'">
-    <kendo-appbar-section>
-      <button class="k-button k-button-clear">
-        <!-- <kendo-icon [name]="'menu'"></kendo-icon> -->
-      </button>
-    </kendo-appbar-section>
 
     <kendo-appbar-section>
       <h1 class="title">HTC</h1>
@@ -59,4 +53,6 @@
     <kendo-appbar-section>
       <p><b>Date :</b> {{todayDate | date:'MM/dd/yy'}} <b>Time:</b> {{time | date:'hh:mm:ss a'}}</p>
     </kendo-appbar-section>
+
+
   </kendo-appbar>

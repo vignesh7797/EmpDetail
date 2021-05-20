@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,11 @@ import { AuthGuard } from './guard/auth.guard';
 import { NavigationModule } from "@progress/kendo-angular-navigation";
 import { LayoutModule } from "@progress/kendo-angular-layout";
 import { IconsModule } from '@progress/kendo-angular-icons';
+import { ButtonsModule } from "@progress/kendo-angular-buttons";
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label';
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +44,7 @@ import { IconsModule } from '@progress/kendo-angular-icons';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -45,7 +52,10 @@ import { IconsModule } from '@progress/kendo-angular-icons';
     NgbModule,
     NavigationModule,
     LayoutModule,
-    IconsModule
+    IconsModule,
+    ButtonsModule,
+    InputsModule,
+    LabelModule
   ],
   providers: [UserResolver,LoginGuard, AuthGuard],
   bootstrap: [AppComponent]

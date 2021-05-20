@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   time = new Date();
   timer;
   islogged:boolean=false;
+ // actionLogin='LogIn'
 
   public NoOf:number = 0;
 
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     this.auth.loginStatus().subscribe(s => {
       this.islogged = s;
+      return this.islogged;
     })
    }
 
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.auth.getStatus(false);
     }
   }
+
 
   ngOnDestroy(){
     clearInterval(this.timer);

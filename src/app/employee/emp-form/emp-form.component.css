@@ -1,0 +1,9 @@
+.k-textbox, .k-maskedtextbox{
+    width: 100%;
+}
+.is-invalid{
+    border-color: #ff0000;
+}
+.k-form-field{
+    margin-top: 1rem;
+}

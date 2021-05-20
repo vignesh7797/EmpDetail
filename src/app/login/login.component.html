@@ -7,11 +7,11 @@
 
         <form [formGroup]="OneTimePass" (ngSubmit)="OnSubmit()" >
             <div>
-                <input type="number" name="pass" formControlName="pass" class="form-control" placeholder="Enter OTP" required [ngClass]="{'is-invalid': submitted && f.pass.errors}">
+                <kendo-textbox name="pass" formControlName="pass" placeholder="Enter OTP" required [ngClass]="{'is-invalid': submitted && f.pass.errors}"></kendo-textbox>
                 <span *ngIf="submitted && f.pass.errors" class="text-danger">Please Enter the OTP*</span>
             </div> 
             
-            <button type="submit" class="btn btn-success mt-5">Log In</button>
+            <button kendoButton type="submit" class="btn btn-success mt-5">Log In</button>
         </form>
 
     </div>
