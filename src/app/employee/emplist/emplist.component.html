@@ -1,44 +1,49 @@
 <h3 style="text-align: center;">Employee List</h3>
 
-<table class="table table-hover col-md-10 mt-3" >
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Emp.Id</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone No.</th>
-            <th scope="col">Joining Date</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let data of empList; let i=index">
-            <td><a class="text-primary" [routerLink]="'/e-portal/'+data.empid" (click)="getDetail(data)">{{data.name}}</a></td>
-            <td>{{data.empid}}</td>
-            <td>{{data.email}}</td>
-            <td>{{data.phone |phone}}</td>
-            <td>{{data.joiningdate | date:'dd/MM/yy'}}</td>
-            <td><a class="text-primary" (click)="OnEdit(data)">edit</a></td>
-            <td><a class="text-primary" (click)="open(content, data)">delete</a></td>
-        </tr>
-    </tbody>
-</table>
 
-<ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">User Confirmation</h4>
-      <button type="button" class="btn" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <h5>Do you want to delete this employee details.?</h5>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="modal.close('Yes')">Yes</button>
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('No')">No</button>
-    </div>
-  </ng-template>
-  
-  <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+  <kendo-grid [data]="gridView" [height]="410" [pageSize]="pageSize" [skip]="skip" [pageable]="true" (pageChange)="pageChange($event)"> 
+    <kendo-grid-column field="empid" title="Id" width="50">
+    </kendo-grid-column>
+    <kendo-grid-column field="name" title="Name" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="email" title="Email" width="170">
+    </kendo-grid-column>
+    <kendo-grid-column field="phone" title="Phone No." width="150">
+    </kendo-grid-column>
+    <kendo-grid-column field="joiningdate" title="Joinind Date" format="{0:d}" width="150">
+    </kendo-grid-column>
+    <kendo-grid-column  title="Edit" width="70">
+      <ng-template kendoGridCellTemplate>
+        <button kendoButton icon="edit" (click)="OnEdit(gridView)"></button>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column  title="Delete" width="80">
+      <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+        <button kendoButton icon="delete" (click)="open('open', gridView.data[rowIndex])"></button>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="name" title="Index">
+      <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+          Data Row #: {{rowIndex}} /
+          <strong>{{gridView.name}}</strong>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+
+
+
+  <kendo-dialog
+      title="Please confirm"
+      *ngIf="openDialog"
+      (close)="open('cancel')"
+      [minWidth]="250"
+      [width]="450"
+    >
+      <p style="margin: 30px; text-align: center;">
+        Are you sure you want to delete this employee details.?
+      </p>
+      <kendo-dialog-actions>
+        <button kendoButton (click)="open('no')">No</button>
+        <button kendoButton (click)="open('yes')" primary="true">Yes</button>
+      </kendo-dialog-actions>
+    </kendo-dialog>

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormatSettings } from '@progress/kendo-angular-dateinputs';
 import { PhonePipe } from 'src/app/pipe/phone.pipe';
 import { EditdataService } from '../../share/editdata.service';
 import { EmpdataService } from '../../share/empdata.service';
@@ -19,8 +20,16 @@ export class EmpFormComponent implements OnInit {
   isUpdate=false;
   phonepipe = new PhonePipe();
   Default;
-  mask='000 000 0000'
+  mask='000 000 0000';
 
+  public min: Date = new Date(1950, 0, 1);
+  public max: Date = new Date();
+
+  public format: FormatSettings = {
+    displayFormat: "dd/MM/yyyy",
+    inputFormat: "dd/MM/yyyy",
+  };
+  
   @ViewChild('phone') phone:ElementRef;
 
 
@@ -31,7 +40,7 @@ export class EmpFormComponent implements OnInit {
       'empid':[null, [Validators.required, Validators.minLength(1), Validators.maxLength(5)]],
       'email':[null, [Validators.required, Validators.email]],
       'phone':['', [Validators.required, Validators.minLength(10)]],
-      'joiningdate':[null, [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]]
+      'joiningdate':[new Date(), [Validators.required,]]
     });
 
    
@@ -55,26 +64,26 @@ export class EmpFormComponent implements OnInit {
 
   onSubmit(){
 
-    let value=this.phone.nativeElement.value;
-     value = value.toString();
+    // let value=this.phone.nativeElement.value;
+    //  value = value.toString();
     
      
 
-     let sp = value.split("");
-     console.log(sp)
+    //  let sp = value.split("");
+    //  console.log(sp)
 
-     if(sp[0] == '+'){
-      for(let i=0; i<sp.length;i++){
-        if(sp[i] == " "){
-          sp.splice(i,1);
-        }
-      }
-      sp.splice(0,3);
-     }
+    //  if(sp[0] == '+'){
+    //   for(let i=0; i<sp.length;i++){
+    //     if(sp[i] == " "){
+    //       sp.splice(i,1);
+    //     }
+    //   }
+    //   sp.splice(0,3);
+    //  }
     
-    sp = sp.join('');
+    // sp = sp.join('');
     
-    this.EmployeeForm.value.phone = parseInt(sp);
+    // this.EmployeeForm.value.phone = parseInt(sp);
 
     this.submitted = true;
 

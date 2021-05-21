@@ -55,6 +55,7 @@ export class EmpdataService implements OnInit{
 
   deletedata(value){
     const index = this.arr.indexOf(value);
+    console.log(index);
     this.arr.splice(index, 1);
     this.empData.next(this.arr);
   }

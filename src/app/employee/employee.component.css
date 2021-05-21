@@ -1,4 +1,4 @@
 .user-details{
-    height: 75vh;
+    height: fit-content;
     overflow: auto;
 }

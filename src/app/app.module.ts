@@ -26,6 +26,13 @@ import { IconsModule } from '@progress/kendo-angular-icons';
 import { ButtonsModule } from "@progress/kendo-angular-buttons";
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { IntlModule } from '@progress/kendo-angular-intl'
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
+
+
 
 
 
@@ -55,7 +62,11 @@ import { LabelModule } from '@progress/kendo-angular-label';
     IconsModule,
     ButtonsModule,
     InputsModule,
-    LabelModule
+    LabelModule,
+    DateInputsModule,
+    GridModule,
+    IntlModule,
+    DialogsModule
   ],
   providers: [UserResolver,LoginGuard, AuthGuard],
   bootstrap: [AppComponent]

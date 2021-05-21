@@ -4,7 +4,7 @@
 <p><b>Employee Id:</b> {{empDetail.empid}}</p>
 <p><b>Email:</b> {{empDetail.email}}</p>
 <p><b>Phone:</b> {{empDetail.phone |phone}}</p>
-<p><b>Date of Joining:</b> {{empDetail.joiningdate}}</p>
+<p><b>Date of Joining:</b> {{empDetail.joiningdate | date:'fullDate'}}</p>
 
 <div class="row">
     <a class="col-5 m-1 btn btn-success"  routerLink="/e-portal">Go to List</a>

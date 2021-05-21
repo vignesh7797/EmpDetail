@@ -4,6 +4,7 @@ import { EmpdataService } from '../../share/empdata.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/share/auth.service';
+import { GridDataResult, PageChangeEvent } from "@progress/kendo-angular-grid";
 
 @Component({
   selector: 'app-emplist',
@@ -15,6 +16,12 @@ export class EmplistComponent implements OnInit {
   empList:any[];
   closeResult = '';
   LoginStatus:boolean;
+
+  public gridView: GridDataResult;
+  public pageSize = 5;
+  public skip = 0;
+  private items: any[];
+  openDialog = false;
   
 
   constructor(private route:ActivatedRoute, private router:Router, private authService:AuthService ,private empdata: EmpdataService, private editdata: EditdataService, private modalService: NgbModal) { 
@@ -27,10 +34,12 @@ export class EmplistComponent implements OnInit {
       this.LoginStatus = s;
      });
      
+     this.items = this.empList;
+     this.loadItems();
   } 
 
   ngOnInit(): void { 
-    this.empList = this.route.snapshot.data.users;
+   // this.empList = this.route.snapshot.data.users;
     console.log(this.empList.length);
   }
 
@@ -47,19 +56,24 @@ export class EmplistComponent implements OnInit {
 
 
 
-  open(content, data) {
+  open(status, data?) {
 
+    console.log(data)
     if(this.LoginStatus){
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-     
-        if(result == "Yes"){
-          this.empdata.deletedata(data);
-        }
-      });
+
+      if(status == 'open'){
+        this.openDialog = true
+      }else if(status == 'yes'){
+        this.empdata.deletedata(data);
+        this.openDialog = false;
+      }else if(status == 'no' || status == 'cancel'){
+        this.openDialog = false;
+      }
+      
     }else{
       this.router.navigateByUrl('/login');
-     // this.authService.store(data,'edit', content);
     }
+
 
     
   }
@@ -67,6 +81,20 @@ export class EmplistComponent implements OnInit {
   getDetail(detail){
     this.empdata.setDetail(detail);
   }
+
+
+  public pageChange(event: PageChangeEvent): void {
+    this.skip = event.skip;
+    this.loadItems();
+  }
+
+  private loadItems(): void {
+    this.gridView = {
+      data: this.items.slice(this.skip, this.skip + this.pageSize),
+      total: this.items.length,
+    };
+  }
+
 
 
 }

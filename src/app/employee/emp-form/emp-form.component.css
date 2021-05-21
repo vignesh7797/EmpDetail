@@ -1,8 +1,10 @@
-.k-textbox, .k-maskedtextbox{
+.k-textbox, .k-maskedtextbox, .k-datepicker{
     width: 100%;
 }
 .is-invalid{
-    border-color: #ff0000;
+    border-color: #ff0000 !important;
+    border: 1px solid;
+    border-radius: 6px;
 }
 .k-form-field{
     margin-top: 1rem;
